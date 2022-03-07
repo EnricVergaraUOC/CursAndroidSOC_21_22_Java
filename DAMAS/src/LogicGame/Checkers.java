@@ -8,6 +8,9 @@ public class Checkers {
 		ChessBoard board = new ChessBoard();
 		System.out.println(board.toString());
 		
+		
+		
+		
 	}
 
 }
