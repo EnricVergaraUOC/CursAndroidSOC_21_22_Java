@@ -8,7 +8,7 @@ public class ChessBoard {
 	ChessBoard(){
 		board = new Cell[ROWS][COLS];
 		initializeBoard();
-		//initializePieces();
+		initializePieces();
 		
 	}
 	
@@ -16,16 +16,74 @@ public class ChessBoard {
 		for(int row = ROWS -1; row >= 0; row--) {
 			for(int col = 0; col < COLS; col++) {
 				if ((row+col)%2==0) {
-					board[row][col] = new Cell(Cell.WHITE, Piece.EMPTY);
-				}else {
 					board[row][col] = new Cell(Cell.BLACK, Piece.EMPTY);
+				}else {
+					board[row][col] = new Cell(Cell.WHITE, Piece.EMPTY);
 				}
 			}
 		}
 	}
 	
 	private void  initializePieces() {
+		 
+		this.setPiece(new Pawn (Piece.BLACK),"b8");
+		this.setPiece(new Pawn (Piece.BLACK),"d8");
+		this.setPiece(new Pawn (Piece.BLACK),"f8");
+		this.setPiece(new Pawn (Piece.BLACK),"h8");
+		this.setPiece(new Pawn (Piece.BLACK),"a7");
+		this.setPiece(new Pawn (Piece.BLACK),"c7");
+		this.setPiece(new Pawn (Piece.BLACK),"e7");
+		this.setPiece(new Pawn (Piece.BLACK),"g7");
+		this.setPiece(new Pawn (Piece.BLACK),"b6");
+		this.setPiece(new Pawn (Piece.BLACK),"d6");
+		this.setPiece(new Pawn (Piece.BLACK),"f6");
+		this.setPiece(new Pawn (Piece.BLACK),"h6");
 		
+		this.setPiece(new Pawn (Piece.WHITE),"a3");
+		this.setPiece(new Pawn (Piece.WHITE),"c3");
+		this.setPiece(new Pawn (Piece.WHITE),"e3");
+		this.setPiece(new Pawn (Piece.WHITE),"g3");
+		this.setPiece(new Pawn (Piece.WHITE),"b2");
+		this.setPiece(new Pawn (Piece.WHITE),"d2");
+		this.setPiece(new Pawn (Piece.WHITE),"f2");
+		this.setPiece(new Pawn (Piece.WHITE),"h2");
+		this.setPiece(new Pawn (Piece.WHITE),"a1");
+		this.setPiece(new Pawn (Piece.WHITE),"c1");
+		this.setPiece(new Pawn (Piece.WHITE),"e1");
+		this.setPiece(new Pawn (Piece.WHITE),"g1");
+
+	}
+	
+	private void setPiece(Piece piece, String position) {
+		//Cell cellAux=this.getCell(position);
+		int col=getCol(position);
+		int row=getRow(position);
+		 board[row][col].SetPiece(piece);
+		
+	}
+	
+	public Cell getCell(String position) {
+		int col=getCol(position);
+		int row=getRow(position);
+		return board[row][col];
+	}
+	
+	/**
+    * Returns the x-axis of a position on ChessBoard.
+    * @param position  a position on ChessBoard.
+    * @return int  Returns the x-axis of a position.
+    */	
+	private int getCol(String position) {
+		return position.charAt(0) - 'a';
+	}
+
+   /**
+    * Returns the y-axis of a position on ChessBoard.
+    * @param position  a position on ChessBoard.
+    * @return int  Returns the y-axis of a position.
+    */	
+	private int getRow(String position) {
+		return position.charAt(1) - '1';
 	}
 	
 	public String toString() {
