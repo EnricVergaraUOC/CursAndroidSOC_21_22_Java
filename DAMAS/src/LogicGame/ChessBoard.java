@@ -11,6 +11,17 @@ public class ChessBoard {
 		initializePieces();
 		
 	}
+	public void movePiece( String initialPosition, String finalPosition) {
+		Cell initialCell = getCell(initialPosition);
+		if(initialCell.hasPiece()) {
+			Piece aux = initialCell.getPiece();
+			setPiece(aux, finalPosition);
+			initialCell.empty();
+			
+		}
+		
+	}
+	
 	
 	private void initializeBoard() {
 		for(int row = ROWS -1; row >= 0; row--) {
@@ -55,11 +66,8 @@ public class ChessBoard {
 	}
 	
 	private void setPiece(Piece piece, String position) {
-		//Cell cellAux=this.getCell(position);
-		int col=getCol(position);
-		int row=getRow(position);
-		 board[row][col].SetPiece(piece);
-		
+		Cell cellAux=this.getCell(position);
+		cellAux.SetPiece(piece);
 	}
 	
 	public Cell getCell(String position) {

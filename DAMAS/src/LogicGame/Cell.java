@@ -15,6 +15,19 @@ public class Cell {
 		
 	}
 	
+	public void empty() {
+		this.piece = Piece.EMPTY;
+	}
+	
+	public Piece getPiece() {
+		return this.piece;
+	}
+	
+	public boolean hasPiece() {
+		return (this.piece != Piece.EMPTY);
+ 
+	}
+	
 	public void SetColour(boolean colour) {
 		this.colour = colour;
 	}
