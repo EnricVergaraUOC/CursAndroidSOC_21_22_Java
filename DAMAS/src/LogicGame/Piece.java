@@ -1,5 +1,7 @@
 package LogicGame;
 
+import java.util.ArrayList;
+
 public abstract class Piece {
 	
 	public final static boolean WHITE = true;
@@ -20,7 +22,7 @@ public abstract class Piece {
 		return this.colour;
 	}
 	
-	public abstract Cell GetValidMoves (ChessBoard board);
+	public abstract ArrayList<String> GetValidMoves (ChessBoard board, String position);
 	
 	
 	

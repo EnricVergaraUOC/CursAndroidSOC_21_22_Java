@@ -1,5 +1,7 @@
 package LogicGame;
 
+import java.util.ArrayList;
+
 public class Queen extends Piece {
 	final String white_queen = "\u25CE";
 	final String black_queen = "\u25C9";
@@ -12,7 +14,7 @@ public class Queen extends Piece {
 		return this.colour? white_queen: black_queen;
 	}
 	
-	public  Cell GetValidMoves (ChessBoard board) {
+	public  ArrayList<String> GetValidMoves (ChessBoard board, String position) {
 		return null;
 	}
 }

@@ -1,5 +1,7 @@
 package LogicGame;
 
+import java.util.ArrayList;
+
 public class ChessBoard {
 
 	public final static int COLS = 8;
@@ -12,15 +14,12 @@ public class ChessBoard {
 		
 	}
 	
-	public boolean movePiece(String initialPosition, String finalPosition,
+	boolean movePiece(String initialPosition, String finalPosition,
 			boolean player) throws CheckersException {
-		
-		boolean returnValue = true;
 		
 		// Check if the cell has a piece on it
 		Cell initialCell = getCell(initialPosition);
-		Cell finalCell = getCell(finalPosition);
-
+		
 		if (!initialCell.hasPiece()) {
 			throw new CheckersException(
 					CheckersException.NO_PIECE_ON_CELL, initialPosition);
@@ -34,9 +33,27 @@ public class ChessBoard {
 					player ? "WHITE" : "BLACK");
 		}
 		
-		initialCell.getPiece().GetValidMoves(this);
 		
-		return returnValue;
+		ArrayList<String> moves =  initialCell.getPiece().GetValidMoves(this, initialPosition);
+		//Fer un recorregut per moves per mirar si existeix finalPosition
+		boolean moveIsValid = false;
+		for(String move: moves) {
+			if (move.compareTo(finalPosition) == 0) {
+				moveIsValid = true;
+			}
+		}
+		
+		if (!moveIsValid) {
+			throw new CheckersException(
+					CheckersException.INCORRECT_MOVE_VALUE);
+		}
+		
+		Piece aux = initialCell.getPiece();
+		setPiece(aux, finalPosition);
+		initialCell.empty();
+		
+		//TODO return true if game is finished (because someone is the winner or there is a draw)
+		return false;
 	}
 
 	
@@ -46,16 +63,6 @@ public class ChessBoard {
 	}
 	
 	
-	public void movePiece( String initialPosition, String finalPosition) {
-		Cell initialCell = getCell(initialPosition);
-		if(initialCell.hasPiece()) {
-			Piece aux = initialCell.getPiece();
-			setPiece(aux, finalPosition);
-			initialCell.empty();
-			
-		}
-		
-	}
 	
 	
 	private void initializeBoard() {
@@ -116,7 +123,7 @@ public class ChessBoard {
     * @param position  a position on ChessBoard.
     * @return int  Returns the x-axis of a position.
     */	
-	private int getCol(String position) {
+	public int getCol(String position) {
 		return position.charAt(0) - 'a';
 	}
 
@@ -125,7 +132,7 @@ public class ChessBoard {
     * @param position  a position on ChessBoard.
     * @return int  Returns the y-axis of a position.
     */	
-	private int getRow(String position) {
+	public int getRow(String position) {
 		return position.charAt(1) - '1';
 	}
 	

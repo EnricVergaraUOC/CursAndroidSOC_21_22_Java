@@ -245,10 +245,7 @@ public class Checkers {
     * @param args Unused.
     */
 	public static void main(String args[]) {
-		Piece newPiece = new Pawn(Piece.WHITE);
-		newPiece.GetValidMoves(null);
-		
-		
+			
 		Checkers g = new Checkers();
 		g.play();
 	}
