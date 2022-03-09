@@ -1,3 +1,5 @@
+package LogicGame;
+
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.util.regex.*;
@@ -231,8 +233,8 @@ public class Checkers {
 							CheckersException.INCORRECT_OPTION);
 				}
 			} catch (CheckersException ce) {
-				//System.err.println(ce.toString());
-				ce.printStackTrace();
+				System.err.println(ce.toString());
+				//ce.printStackTrace();
 			}
 		} while (true);
 	}
@@ -243,7 +245,10 @@ public class Checkers {
     * @param args Unused.
     */
 	public static void main(String args[]) {
-
+		Piece newPiece = new Pawn(Piece.WHITE);
+		newPiece.GetValidMoves(null);
+		
+		
 		Checkers g = new Checkers();
 		g.play();
 	}

@@ -11,6 +11,41 @@ public class ChessBoard {
 		initializePieces();
 		
 	}
+	
+	public boolean movePiece(String initialPosition, String finalPosition,
+			boolean player) throws CheckersException {
+		
+		boolean returnValue = true;
+		
+		// Check if the cell has a piece on it
+		Cell initialCell = getCell(initialPosition);
+		Cell finalCell = getCell(finalPosition);
+
+		if (!initialCell.hasPiece()) {
+			throw new CheckersException(
+					CheckersException.NO_PIECE_ON_CELL, initialPosition);
+		}
+		Piece initialPiece = initialCell.getPiece();
+
+		// Check if the player is moving any of his pieces
+		if (player != initialPiece.GetColour()) {
+			throw new CheckersException(
+					CheckersException.PLAYER_MUST_MOVE_HIS_PIECES,
+					player ? "WHITE" : "BLACK");
+		}
+		
+		initialCell.getPiece().GetValidMoves(this);
+		
+		return returnValue;
+	}
+
+	
+	public boolean getWinnerColour() {
+		//TODO completar la función de getWinnerColour.
+		return true;
+	}
+	
+	
 	public void movePiece( String initialPosition, String finalPosition) {
 		Cell initialCell = getCell(initialPosition);
 		if(initialCell.hasPiece()) {

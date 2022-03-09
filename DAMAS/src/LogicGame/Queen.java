@@ -11,4 +11,8 @@ public class Queen extends Piece {
 	public String toString() {
 		return this.colour? white_queen: black_queen;
 	}
+	
+	public  Cell GetValidMoves (ChessBoard board) {
+		return null;
+	}
 }

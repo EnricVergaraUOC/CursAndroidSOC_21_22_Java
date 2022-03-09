@@ -20,6 +20,8 @@ public abstract class Piece {
 		return this.colour;
 	}
 	
+	public abstract Cell GetValidMoves (ChessBoard board);
+	
 	
 	
 	

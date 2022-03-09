@@ -11,4 +11,9 @@ public class Pawn extends Piece {
 	public String toString() {
 		return this.colour? white_pawn: black_pawn;
 	}
+	
+	public  Cell GetValidMoves (ChessBoard board) {
+		System.out.println("GetValidMoves from Pawn");
+		return null;
+	}
 }
