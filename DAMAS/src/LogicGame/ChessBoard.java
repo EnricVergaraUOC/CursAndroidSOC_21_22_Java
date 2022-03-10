@@ -53,7 +53,7 @@ public class ChessBoard {
 		initialCell.empty();
 		
 		//TODO return true if game is finished (because someone is the winner or there is a draw)
-		return false;
+		return true;
 	}
 
 	
@@ -107,7 +107,7 @@ public class ChessBoard {
 
 	}
 	
-	private void setPiece(Piece piece, String position) {
+	public void setPiece(Piece piece, String position) {
 		Cell cellAux=this.getCell(position);
 		cellAux.SetPiece(piece);
 	}
@@ -198,6 +198,7 @@ public class ChessBoard {
 			 
 		 }
 		
+		chessBoard += "   a  b  c  d  e  f  g  h"+NL;
 		return chessBoard;
 	}
 	

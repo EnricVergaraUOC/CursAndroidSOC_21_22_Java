@@ -24,7 +24,22 @@ public abstract class Piece {
 	
 	public abstract ArrayList<String> GetValidMoves (ChessBoard board, String position);
 	
+	public static boolean IsInsideBoard(int col, int row) {
+		if (col >= 0 && col < ChessBoard.COLS &&
+				row >= 0 && row < ChessBoard.ROWS) {
+			return true;
+		}
+		return false;
+	}
+
 	
+
+	public static String convertPosToString(int col, int row) {
+		String position = "";
+		position += (char)('a' + col);
+		position += (char)('1' + row);
+		return position;
+	}
 	
 	
 }

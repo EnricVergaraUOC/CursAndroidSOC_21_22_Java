@@ -61,7 +61,7 @@ public class Pawn extends Piece {
 			}else {
 				newPos = convertPosToString(col_move, row_move);
 				c = board.getCell(newPos);
-				if (c.hasPiece()) {
+				if (!c.hasPiece()) {
 					res = newPos;
 				}
 			}
@@ -70,20 +70,5 @@ public class Pawn extends Piece {
 		return res;
 	}
 	
-	private boolean IsInsideBoard(int col, int row) {
-		if (col >= 0 && col <= ChessBoard.COLS &&
-				row >= 0 && row<= ChessBoard.ROWS) {
-			return true;
-		}
-		return false;
-	}
-
 	
-
-	private String convertPosToString(int col, int row) {
-		String position = "";
-		position += (char)('a' + col);
-		position += (char)('1' + row);
-		return position;
-	}
 }

@@ -246,7 +246,72 @@ public class Checkers {
     */
 	public static void main(String args[]) {
 			
-		Checkers g = new Checkers();
-		g.play();
+		//Checkers g = new Checkers();
+		//g.play();
+		
+		
+		
+		System.out.println("Starting Test");
+		ChessBoard board = new ChessBoard();
+		System.out.println(board.toString());
+		
+		//Test 1:
+		ResetChessBoard(board);
+		board.setPiece(new Pawn(Piece.WHITE), "d2");
+		try{
+			board.movePiece("d2", "d3", Piece.WHITE);
+			System.err.println("Error 1");
+		}catch(CheckersException e) {
+			//Nothing to do.
+		}
+		
+		//Test 2:
+		ResetChessBoard(board);
+		board.setPiece(new Pawn(Piece.WHITE), "d2");
+		try{
+			board.movePiece("d2", "e3", Piece.WHITE);
+			
+		}catch(CheckersException e) {
+			System.err.println("Error 2");
+		}
+		
+		//Test 3:
+		ResetChessBoard(board);
+		board.setPiece(new Pawn(Piece.WHITE), "d2");
+		try{
+			board.movePiece("d2", "c3", Piece.WHITE);
+			
+		}catch(CheckersException e) {
+			System.err.println("Error 3");
+		}
+		
+		System.out.println("Test Finished");
+		
+		
+		//Test 4:
+		ResetChessBoard(board);
+		board.setPiece(new Pawn(Piece.WHITE), "e3");
+		board.setPiece(new Pawn(Piece.BLACK), "f4");
+		try{
+			board.movePiece("e3", "g5", Piece.WHITE);
+			
+		}catch(CheckersException e) {
+			System.err.println("Error 4");
+		}
+		
+		System.out.println("Test Finished");
+		
 	}
+	
+	
+	public static void ResetChessBoard(ChessBoard board) {
+		for (int i = 0; i < ChessBoard.COLS; i++) {
+			for (int j = 0; j < ChessBoard.ROWS; j++) {
+				String pos = Piece.convertPosToString(i, j);
+				board.setPiece(Piece.EMPTY, pos);
+			}
+		}
+	}
+	
+	
 }
