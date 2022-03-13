@@ -8,6 +8,11 @@ public class Pawn extends Piece {
 	
 	public Pawn(boolean colour) {
 		super(colour);
+		if (colour == WHITE) {
+			TOTAL_WHITE_PIECES++;
+		}else {
+			TOTAL_BLACK_PIECES++;
+		}
 	}
 	
 	public String toString() {

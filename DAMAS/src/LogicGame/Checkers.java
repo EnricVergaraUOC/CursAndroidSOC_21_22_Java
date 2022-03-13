@@ -124,7 +124,8 @@ public class Checkers {
 		}
 
 		// Ask ChessBoard to move the piece
-		if (chessBoard.movePiece(initialPosition, finalPosition, this.player)) {	
+		chessBoard.movePiece(initialPosition, finalPosition, this.player);
+		if (!chessBoard.isThereWinner()) {	
 			this.player = this.player ? Piece.BLACK : Piece.WHITE;
 			System.out.println(">> Done");
 		}
@@ -249,14 +250,16 @@ public class Checkers {
 		//Checkers g = new Checkers();
 		//g.play();
 		
+		RunTests();
 		
-		
+	}
+	public static void RunTests() {
 		System.out.println("Starting Test");
 		ChessBoard board = new ChessBoard();
 		System.out.println(board.toString());
 		
 		//Test 1:
-		ResetChessBoard(board);
+		board.ResetBoard();
 		board.setPiece(new Pawn(Piece.WHITE), "d2");
 		try{
 			board.movePiece("d2", "d3", Piece.WHITE);
@@ -266,7 +269,7 @@ public class Checkers {
 		}
 		
 		//Test 2:
-		ResetChessBoard(board);
+		board.ResetBoard();
 		board.setPiece(new Pawn(Piece.WHITE), "d2");
 		try{
 			board.movePiece("d2", "e3", Piece.WHITE);
@@ -276,7 +279,7 @@ public class Checkers {
 		}
 		
 		//Test 3:
-		ResetChessBoard(board);
+		board.ResetBoard();
 		board.setPiece(new Pawn(Piece.WHITE), "d2");
 		try{
 			board.movePiece("d2", "c3", Piece.WHITE);
@@ -285,11 +288,10 @@ public class Checkers {
 			System.err.println("Error 3");
 		}
 		
-		System.out.println("Test Finished");
 		
 		
 		//Test 4:
-		ResetChessBoard(board);
+		board.ResetBoard();
 		board.setPiece(new Pawn(Piece.WHITE), "e3");
 		board.setPiece(new Pawn(Piece.BLACK), "f4");
 		try{
@@ -299,19 +301,37 @@ public class Checkers {
 			System.err.println("Error 4");
 		}
 		
+		
+		//Test 5:
+		board.ResetBoard();
+		
+		board.setPiece(new Pawn(Piece.WHITE), "e3");
+		board.setPiece(new Pawn(Piece.WHITE), "g3");
+		board.setPiece(new Pawn(Piece.BLACK), "h6");
+		try{
+			board.movePiece("e3", "f4", Piece.WHITE);
+			if (board.isThereWinner()) {
+				System.err.println("Error 5");
+			}
+			board.movePiece("h6", "g5", Piece.BLACK);
+			if (board.isThereWinner()) {
+				System.err.println("Error 5");
+			}
+			board.movePiece("f4", "h6", Piece.WHITE);
+			if (!board.isThereWinner()) {
+				System.err.println("Error 5");
+			}
+			
+		}catch(CheckersException e) {
+			System.err.println("Error t");
+		}
+		
 		System.out.println("Test Finished");
 		
 	}
 	
-	
-	public static void ResetChessBoard(ChessBoard board) {
-		for (int i = 0; i < ChessBoard.COLS; i++) {
-			for (int j = 0; j < ChessBoard.ROWS; j++) {
-				String pos = Piece.convertPosToString(i, j);
-				board.setPiece(Piece.EMPTY, pos);
-			}
-		}
-	}
+		
+		
 	
 	
 }
