@@ -1,6 +1,7 @@
 package LogicGame;
 
 import java.io.BufferedReader;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
@@ -248,24 +249,39 @@ public class Checkers {
     * @param args Unused.
     */
 	public static void main(String args[]) {
-			
+		/*
 		CheckersIO io = new CheckersIO();
+			
+		
 		try {
 			ArrayList<String> moves = new ArrayList<String>();
-			moves.add("a1 b1");
-			moves.add("a2 b2");
-			moves.add("a3 b3");
+			moves.add("a0 b1");
+			moves.add("a0 b2");
+			moves.add("a0 b3");
 			io.setOutput("moves1.txt");
 			io.write(moves);
 		}catch(IOException e) {
 			System.err.println(e.toString());
 		}
 		
+		try {
+			io.setInputFile("moves.txt");
+			ArrayList<String> moves = io.read();
+			for(String move: moves) {
+				System.out.println(move);
+			}
+		}catch (FileNotFoundException e) {
+			System.err.println("FileNotFoundException" + e.toString());
+		}
+		catch (IOException e) {
+			System.err.println(e.toString());
+		}
 		System.out.println("test writing in file finished");
+		*/
 		
 		
-		//Checkers g = new Checkers();
-		//g.play();
+		Checkers g = new Checkers();
+		g.play();
 		
 		//RunTests();
 		
