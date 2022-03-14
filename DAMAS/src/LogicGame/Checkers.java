@@ -247,10 +247,10 @@ public class Checkers {
     */
 	public static void main(String args[]) {
 			
-		//Checkers g = new Checkers();
-		//g.play();
+		Checkers g = new Checkers();
+		g.play();
 		
-		RunTests();
+		//RunTests();
 		
 	}
 	public static void RunTests() {

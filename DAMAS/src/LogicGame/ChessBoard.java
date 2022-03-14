@@ -46,8 +46,17 @@ public class ChessBoard {
 			throw new CheckersException(CheckersException.INCORRECT_MOVE_VALUE);
 		}
 
+		
+		
 		Piece aux = initialCell.getPiece();
+		
+		int row = getRow(finalPosition);
+		if (row == 0 || row == ROWS-1) {
+			aux = new Queen(aux.GetColour());
+		}
 		setPiece(aux, finalPosition);
+		
+		
 		initialCell.empty();
 
 		if (this.isThereAJump(initialPosition, finalPosition)) {
