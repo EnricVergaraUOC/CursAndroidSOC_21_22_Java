@@ -1,7 +1,9 @@
 package LogicGame;
 
 import java.io.BufferedReader;
+import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.ArrayList;
 import java.util.regex.*;
 
 /**
@@ -247,8 +249,23 @@ public class Checkers {
     */
 	public static void main(String args[]) {
 			
-		Checkers g = new Checkers();
-		g.play();
+		CheckersIO io = new CheckersIO();
+		try {
+			ArrayList<String> moves = new ArrayList<String>();
+			moves.add("a1 b1");
+			moves.add("a2 b2");
+			moves.add("a3 b3");
+			io.setOutput("moves1.txt");
+			io.write(moves);
+		}catch(IOException e) {
+			System.err.println(e.toString());
+		}
+		
+		System.out.println("test writing in file finished");
+		
+		
+		//Checkers g = new Checkers();
+		//g.play();
 		
 		//RunTests();
 		

@@ -221,9 +221,7 @@ public class ChessBoard {
 		String bottom_right = "\u2518";
 		String NL = System.getProperty("line.separator");
 		String space = " ";
-		String white_cell = "\u2591";
-		String black_cell = "\u2588";
-
+		
 		String chessBoard = "";
 
 		// -----Line Top------------------------------
