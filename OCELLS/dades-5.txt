@@ -1,0 +1,88 @@
+Tallarol casquet
+Banyoles
+3
+2021 1 1
+Aligot comu
+Girona
+1
+2019 1 1
+Tudo
+Girona
+15
+2020 1 2
+Pit-roig
+Sant Julia de Ramis
+3
+2021 1 1
+Pit-roig
+Sant Julia de Ramis
+5
+2019 1 1
+Pit-roig
+Sant Julia de Ramis
+2
+2018 1 3
+Cuereta torrentera
+Llagostera
+1
+2021 1 1
+Cuereta blanca vulgar
+Llagostera
+3
+2018 1 2
+Aligot comu
+Girona
+1
+2020 1 1
+Mallerenga carbonera
+Sarria de Ter
+3
+2017 1 1
+Pit-roig
+Llagostera
+3
+2022 1 1
+Cotxa fumada
+Llagostera
+3
+2016 1 2
+Merla
+Llagostera
+3
+2021 1 1
+Mallerenga carbonera
+Girona
+3
+2021 1 1
+Tallarol casquet
+Sarria de Ter
+2
+2021 1 2
+Aligot comu
+Llagostera
+1
+2018 1 1
+Tallarol casquet
+Girona
+3
+2021 1 2
+Mosquiter comu
+Girona
+6
+2018 1 1
+Mallerenga blava
+Sarria de Ter
+2
+2018 1 3
+Mallerenga carbonera
+Banyoles
+3
+2020 1 1
+Gaig
+Girona
+3
+2020 1 2
+Cuereta blanca vulgar
+Girona
+3
+2022 1 1
