@@ -8,18 +8,26 @@ public class ChessBoard {
 	public final static int ROWS = 8;
 	private ArrayList<Piece> killedWhite;
 	private ArrayList<Piece> killedBlack;
-
+	private ArrayList<String> savedMoves;
+	private boolean pendingMovesToWrite = false; 
 	ChessBoard() {
 		this.killedBlack = new ArrayList<Piece>();
 		this.killedWhite = new ArrayList<Piece>();
+		savedMoves = new ArrayList<String>(); 
 		board = new Cell[ROWS][COLS];
 		initializeBoard();
 		initializePieces();
-
 	}
+	
+	ArrayList<String> getMoves() { return savedMoves;} 
+	void setPendingMovesToWrite( boolean toWrite) {
+		pendingMovesToWrite = toWrite;
+	}
+	boolean isPendingMovesToWrite() { return pendingMovesToWrite;}
 
 	boolean movePiece(String initialPosition, String finalPosition, boolean player) throws CheckersException {
 
+		
 		// Check if the cell has a piece on it
 		Cell initialCell = getCell(initialPosition);
 
@@ -47,6 +55,8 @@ public class ChessBoard {
 		}
 
 		
+		setPendingMovesToWrite(true);
+		savedMoves.add(initialPosition + " " + finalPosition);
 		
 		Piece aux = initialCell.getPiece();
 		

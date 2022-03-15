@@ -13,7 +13,7 @@ public class CheckersIO {
 		in = new BufferedReader (new FileReader(inputFile));
 	}
 	
-	public void setOutput(String outputFile) throws IOException{
+	public void setOutputFile(String outputFile) throws IOException{
 		out = new BufferedWriter (new FileWriter(outputFile));
 
 	}
@@ -34,8 +34,5 @@ public class CheckersIO {
 			out.write(move + NL);
 		}
 		out.close();
-	}
-	
-	
-	
+	}	
 }

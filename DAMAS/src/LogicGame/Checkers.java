@@ -1,14 +1,13 @@
+
 package LogicGame;
 
 import java.io.BufferedReader;
-import java.io.FileNotFoundException;
-import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.regex.*;
 
 /**
- * Model object for ChessPlayer.
+ * Model object for Checkers.
  *
  * @author  Jordi Blasco Planesas<br>
  *          Capacitaci&oacute; digital. Web 2.0 i xarxes socials.<br>
@@ -23,13 +22,14 @@ public class Checkers {
 	private ChessBoard chessBoard = null;
 	private boolean startedGame = false;
 	private boolean player;
-	private boolean DEVELOPMENT_MODE = true;
+	private CheckersIO io = null;
 
    /**
     * Default constructor. It initializes BufferedReader.
     */
 	public Checkers() {
 		in = new BufferedReader(new InputStreamReader(System.in));
+		io = new CheckersIO();
 	}
 
    /**
@@ -39,13 +39,16 @@ public class Checkers {
 	private String getMenu() {
 		StringBuilder sb = new StringBuilder();
 		sb.append("------------------------").append(NL);
-		if (!this.startedGame)
-			sb.append("1. Initialize ChessBoard").append(NL);
-		else
-			sb.append("2. Move a piece").append(NL);
-		sb.append("3. Exit").append(NL);
-		if (this.DEVELOPMENT_MODE)
-			sb.append("4. Debug Cell").append(NL);
+		sb.append("1. Initialize ChessBoard").append(NL);
+		sb.append("2. Move a piece").append(NL);
+		sb.append("3. Load previous game").append(NL);
+		if (chessBoard==null || !chessBoard.isPendingMovesToWrite()) {
+			sb.append("4. Save actual game").append(NL);
+		} else {
+			sb.append("4. Save actual game (*)").append(NL);
+		}
+		sb.append("5. Exit").append(NL);
+		sb.append("6. Debug Cell").append(NL);
 		sb.append("------------------------").append(NL);
 		sb.append("Select option : ");
 		return sb.toString();
@@ -89,6 +92,52 @@ public class Checkers {
 		}
 		return move;
 	}
+	
+   /**
+    * Private method used to manage input issues: set the input file
+    * which contains moves, read the file, put all moves into an 
+    * ArrayList<String> and then for each move executes movePiece(...)
+    * method.
+    */
+	private void manageInput() {
+			
+		String inputFile;
+		System.out.print("Input file : ");
+
+		try {
+			inputFile = in.readLine();
+			io.setInputFile(inputFile);
+			ArrayList<String> movesAux=io.read();
+
+			for (int i=0; i<movesAux.size(); i++) {		
+				movePiece(movesAux.get(i));
+			}
+			chessBoard.setPendingMovesToWrite(false);
+				
+		} catch (Exception e) {
+			inputFile = "";
+		}
+	}
+		
+   /**
+    * Private method used to manage output issues: set the output file,
+    * get from ChessBoard the ArrayList<String> which contains 
+    * all the moves of the game, and write them into the output file.
+    */
+	private void manageOutput() {
+			
+		String outputFile;
+		System.out.print("Output file : ");
+
+		try {
+			outputFile = in.readLine();
+			io.setOutputFile(outputFile);
+			io.write(chessBoard.getMoves());
+			chessBoard.setPendingMovesToWrite(false);
+		} catch (Exception e) {
+			outputFile = "";
+		}
+	}	
 
    /**
     * Private method used to create a ChessBoard object and
@@ -218,13 +267,23 @@ public class Checkers {
 					move = this.readMove();
 					movePiece(move);
 					break;
-				case 3:
+				case 3: /* load previous game */
+					initializeBoard();
+					this.player = Piece.WHITE;
+					manageInput();
+					if (this.player) {
+						System.out.println(">> White turn");
+					} else {
+						System.out.println(">> Black turn");
+					}
+					break;
+				case 4: /* save actual game */
+					manageOutput();
+					break;
+				case 5:
 					exit();
 					break;
-				case 4:
-					if (!this.DEVELOPMENT_MODE)
-						throw new CheckersException(
-								CheckersException.INCORRECT_OPTION);
+				case 6:
 					if (!this.startedGame) {
 						throw new CheckersException(
 								CheckersException.NO_STARTED_GAME);
@@ -237,8 +296,8 @@ public class Checkers {
 							CheckersException.INCORRECT_OPTION);
 				}
 			} catch (CheckersException ce) {
-				System.err.println(ce.toString());
-				//ce.printStackTrace();
+				//System.err.println(ce.toString());
+				ce.printStackTrace();
 			}
 		} while (true);
 	}
@@ -249,43 +308,11 @@ public class Checkers {
     * @param args Unused.
     */
 	public static void main(String args[]) {
-		/*
-		CheckersIO io = new CheckersIO();
-			
-		
-		try {
-			ArrayList<String> moves = new ArrayList<String>();
-			moves.add("a0 b1");
-			moves.add("a0 b2");
-			moves.add("a0 b3");
-			io.setOutput("moves1.txt");
-			io.write(moves);
-		}catch(IOException e) {
-			System.err.println(e.toString());
-		}
-		
-		try {
-			io.setInputFile("moves.txt");
-			ArrayList<String> moves = io.read();
-			for(String move: moves) {
-				System.out.println(move);
-			}
-		}catch (FileNotFoundException e) {
-			System.err.println("FileNotFoundException" + e.toString());
-		}
-		catch (IOException e) {
-			System.err.println(e.toString());
-		}
-		System.out.println("test writing in file finished");
-		*/
-		
-		
+
 		Checkers g = new Checkers();
 		g.play();
-		
-		//RunTests();
-		
 	}
+	
 	public static void RunTests() {
 		System.out.println("Starting Test");
 		ChessBoard board = new ChessBoard();
@@ -362,9 +389,4 @@ public class Checkers {
 		System.out.println("Test Finished");
 		
 	}
-	
-		
-		
-	
-	
 }
