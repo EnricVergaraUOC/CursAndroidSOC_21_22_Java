@@ -10,12 +10,15 @@ public class MunicipalityManager {
 	}
 	
 	public void addMunicipality(Municipality m) {
-		//TODO
+		municipalities.add(m);
 	}
 	
 	public String toString() {
-		String info = "";
-		//TODO
+		String info = "Municipis:\n";
+		info += "---------\n";
+		for(Municipality m: municipalities) {
+			info+= m.toString() + "\n";
+		}
 		return info;
 	}
 	

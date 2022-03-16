@@ -8,14 +8,8 @@ public class Checkers {
 		SpecimenManager specimens = new SpecimenManager();
 		MunicipalityManager municipalities = new MunicipalityManager();
 		
+				
 		
-		Specimen sp1 = new Specimen("pajarrako", 66, new Date(2066,12,66));
-		Specimen sp2 = new Specimen("pajaro loco", 33, new Date(2011,12,12));
-		specimens.addSpecimen(sp1);
-		specimens.addSpecimen(sp2);
-		System.out.println(specimens);
-		
-		/*
 		System.out.println("hola mundo");
 		boolean endOfFile = false;
 		while (!endOfFile) {
@@ -49,7 +43,7 @@ public class Checkers {
 		
 		
 		//specimens_previous.mostraOrdCronol();
-		*/
+		
 		 
 	}
 	

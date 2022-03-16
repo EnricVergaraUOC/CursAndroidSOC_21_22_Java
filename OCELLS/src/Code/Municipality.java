@@ -13,7 +13,9 @@ public class Municipality {
 	
 	public String toString() {
 		String info = "";
-		//TODO
+		info += "{ Nom: " + this.name;
+		info += ", Nombre Obs.: " + this.numOfSightings;
+		info += "}"; 
 		return info;
 	}
 	
