@@ -5,9 +5,18 @@ import java.util.Date;
 public class Checkers {
 	public static void main(String args[]) {
 		
-		System.out.println("hola mundo");
 		SpecimenManager specimens = new SpecimenManager();
 		MunicipalityManager municipalities = new MunicipalityManager();
+		
+		
+		Specimen sp1 = new Specimen("pajarrako", 66, new Date(2066,12,66));
+		Specimen sp2 = new Specimen("pajaro loco", 33, new Date(2011,12,12));
+		specimens.addSpecimen(sp1);
+		specimens.addSpecimen(sp2);
+		System.out.println(specimens);
+		
+		/*
+		System.out.println("hola mundo");
 		boolean endOfFile = false;
 		while (!endOfFile) {
 			//Leer las lineas para crear un specimen
@@ -38,6 +47,10 @@ public class Checkers {
 		System.out.println("Totes les espècies observades amb data posterior a date:");
 		System.out.println(specimens.to_String());
 		
+		
+		//specimens_previous.mostraOrdCronol();
+		*/
+		 
 	}
 	
 }

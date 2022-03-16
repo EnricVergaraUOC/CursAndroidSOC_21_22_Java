@@ -11,7 +11,7 @@ public class Municipality {
 		this.numOfSightings = numOfSightings;
 	}
 	
-	public String to_String() {
+	public String toString() {
 		String info = "";
 		//TODO
 		return info;

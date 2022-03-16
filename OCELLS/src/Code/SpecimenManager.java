@@ -21,12 +21,15 @@ public class SpecimenManager {
 		return previous;
 	}
 	public void addSpecimen(Specimen sp) {
-		//TODO
+		specimens.add(sp);
 	}
 	
-	public String to_String() {
-		String info = "";
-		//TODO
+	public String toString() {
+		String info = "Espècies:\n";
+		info += "---------\n";
+		for(Specimen s: specimens) {
+			info+= s.toString() + "\n";
+		}
 		return info;
 	}
 }

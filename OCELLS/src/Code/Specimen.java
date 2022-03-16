@@ -1,5 +1,6 @@
 package Code;
 
+import java.util.ArrayList;
 import java.util.Date;
 
 public class Specimen {
@@ -13,9 +14,12 @@ public class Specimen {
 		this.numOfSightings = numOfSightings;
 	}
 	
-	public String to_String() {
+	public String toString() {
 		String info = "";
-		//TODO
+		info += "{ Nom: " + this.name;
+		info += ", Nombre Obs.: " + this.numOfSightings;
+		info += ", Data Obs. més recent: " + this.latestDate.toString();
+		info += "}"; 
 		return info;
 	}
 	

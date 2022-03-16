@@ -12,7 +12,8 @@ public class MunicipalityManager {
 	public void addMunicipality(Municipality m) {
 		//TODO
 	}
-	public String to_String() {
+	
+	public String toString() {
 		String info = "";
 		//TODO
 		return info;
