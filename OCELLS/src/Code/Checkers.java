@@ -1,16 +1,29 @@
 package Code;
 
 import java.util.Date;
-
+import java.io.*;
 public class Checkers {
 	public static void main(String args[]) {
 		
 		SpecimenManager specimens = new SpecimenManager();
 		MunicipalityManager municipalities = new MunicipalityManager();
 		
-				
+		BufferedReader in;
+		String currentLine = "";
 		
-		System.out.println("hola mundo");
+		try {
+			in = new BufferedReader (new FileReader("dades-5.txt"));
+			while((currentLine = in.readLine()) != null) {
+				System.out.println(currentLine);
+			}
+			in.close();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		
+		/*
 		boolean endOfFile = false;
 		while (!endOfFile) {
 			//Leer las lineas para crear un specimen
@@ -43,7 +56,7 @@ public class Checkers {
 		
 		
 		//specimens_previous.mostraOrdCronol();
-		
+		*/
 		 
 	}
 	
