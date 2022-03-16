@@ -10,7 +10,19 @@ public class MunicipalityManager {
 	}
 	
 	public void addMunicipality(Municipality m) {
-		municipalities.add(m);
+		boolean found = false;
+		int i = 0;
+		while( !found &&  i <municipalities.size() ) {
+			if (municipalities.get(i).isSameMunicipality(m)) {
+				found = true;
+				municipalities.get(i).update(m);
+			}else {
+				i++;
+			}
+		}
+		if (!found) {
+			municipalities.add(m);	
+		}
 	}
 	
 	public String toString() {

@@ -29,8 +29,15 @@ public class Specimen {
 		return isGreater;
 	}
 	
+	public boolean areSameType(Specimen sp) {
+		return (this.name.compareTo(sp.name) == 0);
+	}
+	
 	public void update(Specimen sp) {
-		//TODO
+		this.numOfSightings += sp.numOfSightings;
+		if (this.latestDate.before(sp.latestDate)) {
+			this.latestDate = sp.latestDate;
+		}
 	}
 	
 }

@@ -25,8 +25,11 @@ public class Municipality {
 		return isGreater;
 	}
 	
+	public boolean isSameMunicipality(Municipality m) {
+		return (this.name.compareTo(m.name) == 0);
+	}
 	public void update(Municipality sp) {
-		//TODO
+		this.numOfSightings += sp.numOfSightings;
 	}
 	
 }

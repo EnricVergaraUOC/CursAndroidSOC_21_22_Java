@@ -21,7 +21,20 @@ public class SpecimenManager {
 		return previous;
 	}
 	public void addSpecimen(Specimen sp) {
-		specimens.add(sp);
+		boolean found = false;
+		int i = 0;
+		while( !found &&  i <specimens.size() ) {
+			if (specimens.get(i).areSameType(sp)) {
+				found = true;
+				specimens.get(i).update(sp);
+			}else {
+				i++;
+			}
+		}
+		if (!found) {
+			specimens.add(sp);	
+		}
+		
 	}
 	
 	public String toString() {
