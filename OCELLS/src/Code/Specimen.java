@@ -23,10 +23,8 @@ public class Specimen {
 		return info;
 	}
 	
-	public boolean isGreater(Specimen sp) {
-		boolean isGreater = false;
-		//TODO
-		return isGreater;
+	public int compare(Specimen sp) {
+		return this.name.compareTo(sp.name);
 	}
 	
 	public boolean areSameType(Specimen sp) {

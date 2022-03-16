@@ -1,6 +1,8 @@
 package Code;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.Date;
 
 public class SpecimenManager {
@@ -32,8 +34,10 @@ public class SpecimenManager {
 			}
 		}
 		if (!found) {
-			specimens.add(sp);	
+			specimens.add(sp);
+			SortElements();
 		}
+		
 		
 	}
 	
@@ -44,5 +48,14 @@ public class SpecimenManager {
 			info+= s.toString() + "\n";
 		}
 		return info;
+	}
+	
+	private void SortElements() {
+		Collections.sort(specimens, new Comparator<Specimen>(){
+		     public int compare(Specimen s1, Specimen s2){
+		         return s1.compare(s2);
+		    	 
+		     }
+		});
 	}
 }

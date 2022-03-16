@@ -1,6 +1,8 @@
 package Code;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 
 public class MunicipalityManager {
 	private ArrayList<Municipality> municipalities;
@@ -21,8 +23,10 @@ public class MunicipalityManager {
 			}
 		}
 		if (!found) {
-			municipalities.add(m);	
+			municipalities.add(m);
+			SortElements();
 		}
+		
 	}
 	
 	public String toString() {
@@ -34,4 +38,12 @@ public class MunicipalityManager {
 		return info;
 	}
 	
+	private void SortElements() {
+		Collections.sort(municipalities, new Comparator<Municipality>(){
+		     public int compare(Municipality s1, Municipality s2){
+		         return s1.compare(s2);
+		    	 
+		     }
+		});
+	}
 }

@@ -19,10 +19,8 @@ public class Municipality {
 		return info;
 	}
 	
-	public boolean isGreater(Municipality sp) {
-		boolean isGreater = false;
-		//TODO
-		return isGreater;
+	public int compare(Municipality m) {
+		return this.name.compareTo(m.name);
 	}
 	
 	public boolean isSameMunicipality(Municipality m) {
