@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.Date;
+import java.util.Iterator;
 
 public class SpecimenManager {
 	private ArrayList<Specimen> specimens;
@@ -14,14 +15,20 @@ public class SpecimenManager {
 	
 	SpecimenManager removePreviousThanDate (Date date) {
 		SpecimenManager previous = new SpecimenManager();
-		for(Specimen s: specimens) {
-			//si el la data de s es previa a la "date"-->
-			previous.addSpecimen(s);
-			specimens.remove(s);
+		
+		Iterator<Specimen> it = specimens.iterator();
+		while (it.hasNext()) {
+			Specimen s = it.next();
+			if (s.isPrevious(date)) {
+				previous.addSpecimen(s);
+				it.remove();	
+			}
 		}
+		
 		
 		return previous;
 	}
+	
 	public void addSpecimen(Specimen sp) {
 		boolean found = false;
 		int i = 0;

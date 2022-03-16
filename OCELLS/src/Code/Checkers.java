@@ -50,6 +50,14 @@ public class Checkers {
 		
 		System.out.println(municipalities);
 		System.out.println(specimens);
+		
+		
+		Date newDate = new Date(2020 - 1900,1,1);
+		SpecimenManager previous = specimens.removePreviousThanDate(newDate);
+		System.out.println("Previous-->");
+		System.out.println(previous);
+		System.out.println("Current-->");
+		System.out.println(specimens);
 		/*
 		boolean endOfFile = false;
 		while (!endOfFile) {
