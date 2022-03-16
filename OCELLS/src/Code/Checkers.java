@@ -12,17 +12,44 @@ public class Checkers {
 		String currentLine = "";
 		
 		try {
+			String s_specimen_name = "";
+			String s_municipality_name = "";
+			String s_numOfSightings = "";
+			String s_date = "";
 			in = new BufferedReader (new FileReader("dades-5.txt"));
-			while((currentLine = in.readLine()) != null) {
-				System.out.println(currentLine);
+			while((s_specimen_name = in.readLine()) != null) {
+				s_municipality_name = in.readLine();
+				s_numOfSightings = in.readLine();
+				s_date = in.readLine();
+				
+				//System.out.println(-ntLine);
+				int numSights=Integer.parseInt(s_numOfSightings);
+				String[] parts = s_date.split(" ");
+				int year = Integer.parseInt(parts[0]) - 1900;
+				int month = Integer.parseInt(parts[1]) - 1;
+				int day = Integer.parseInt(parts[2]);
+				Date d = new Date(year, month, day);
+				Specimen specimen = 
+						new Specimen(
+								s_specimen_name,
+								numSights,
+								d
+								);
+				specimens.addSpecimen(specimen);
+				
+				Municipality municipality = new Municipality (
+						s_municipality_name,
+						numSights); 
+				municipalities.addMunicipality(municipality);		
 			}
 			in.close();
-		} catch (IOException e) {
+		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
-		
+		System.out.println(municipalities);
+		System.out.println(specimens);
 		/*
 		boolean endOfFile = false;
 		while (!endOfFile) {
