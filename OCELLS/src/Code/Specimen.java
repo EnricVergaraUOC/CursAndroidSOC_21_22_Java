@@ -4,6 +4,9 @@ import java.util.ArrayList;
 import java.util.Date;
 
 public class Specimen {
+	
+	
+	
 	private String	name;
 	private int		numOfSightings;
 	private Date	latestDate;
@@ -26,9 +29,11 @@ public class Specimen {
 	public int compare(Specimen sp) {
 		return this.name.compareTo(sp.name);
 	}
+	
 	public boolean isPrevious(Date d) {
 		return this.latestDate.before(d);
 	}
+	
 	public boolean areSameType(Specimen sp) {
 		return (this.name.compareTo(sp.name) == 0);
 	}
@@ -41,3 +46,4 @@ public class Specimen {
 	}
 	
 }
+
