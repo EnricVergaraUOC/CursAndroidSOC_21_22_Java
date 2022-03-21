@@ -14,18 +14,29 @@ public class Invoice {
 		this.date = date;
 		this.description = description;
 		this.invoiceID = id;
+		this.amount = amount;
 		id++;
 		
 	}
 	
-	public boolean isLessThan(Invoice i) {
-		boolean isLess = false;
+	public int getAmount() {
+		return this.amount;
+	}
+	
+	public int isLessThan(Invoice i) {
+		int isLess = 0;
 		if (this.date.before(i.date)) {
-			isLess = true;
+			isLess = -1;
 		}else if (i.date.before(this.date)) {
-			isLess = false;
+			isLess = 1;
 		}else {
-			isLess = (this.amount < i.amount);
+			if (this.amount < i.amount) {
+				isLess = -1;
+			}else if (this.amount > i.amount) {
+				isLess = 1;
+			}else {
+				isLess = 0;
+			}
 		}
 		
 		return isLess;
@@ -37,6 +48,13 @@ public class Invoice {
 		date = formatter.format(this.date);
 		
 		return date;
+	}
+	
+	public String toString () {
+		String info = "";
+		info += "{ ID: "+ this.invoiceID + ", Description: " + this.description;
+		info += ", Amount: " + this.amount + ", Date: " + getDate() + "}";
+		return info;
 	}
 	
 }
