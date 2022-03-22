@@ -59,4 +59,36 @@ public class Tauler {
 		}
 		return type;
 	}
+	
+	public void tornJoc() {
+		boolean conservaTorn = true;
+		Jugador currentPlayer = players.get(m_tornActual);
+		while (conservaTorn) {
+			
+			if (currentPlayer.potTirar()) {
+				int value = valorDau();
+				int nextCasella = currentPlayer.posicio() + value; 
+				if (nextCasella >= caselles.size()) {
+					conservaTorn = false;
+				}else {
+					currentPlayer.mou(nextCasella);
+					conservaTorn = caselles.get(nextCasella).entraJugador(currentPlayer, caselles);
+				}
+				
+			}else {
+				conservaTorn = false;
+			}
+		}
+		
+		m_tornActual = (m_tornActual+1) % players.size();
+		
+	}
+	
+	private int valorDau() {
+		int value = -1;
+		int Min = 1;
+		int Max = 6;
+		value = Min + (int)(Math.random() * ((Max - Min) + 1));
+		return value;
+	}
 }
