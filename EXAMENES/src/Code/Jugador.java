@@ -13,7 +13,7 @@ public class Jugador {
 	public void guanya() { m_guanyador = true; }
 	public boolean esGuanyador() { return m_guanyador; }
 	
-	public void setInactiu(int nTorns) {
+	public void setInactiu (int nTorns) {
 		m_nTornsInactius = nTorns;
 		m_potTirar = false;
 	}
