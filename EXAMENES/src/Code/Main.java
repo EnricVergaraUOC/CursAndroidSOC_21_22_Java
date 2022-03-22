@@ -5,6 +5,8 @@ import java.util.Date;
 
 public class Main {
 	public static void main(String args[]) {
+		/*
+		//Examen 1:
 		ArrayList<Client> clients = new ArrayList<Client>();
 		Client newClient1 = new Client ("Client1");
 		Client newClient2 = new Client ("Client2");
@@ -16,6 +18,7 @@ public class Main {
 		
 		escriuDadesClients(clients);
 		System.out.println(newClient1.getTotalImport());
+		*/
 	}
 	
 	public static void escriuDadesClients(ArrayList<Client> clients) 
