@@ -3,7 +3,7 @@ package Code;
 import java.util.ArrayList;
 
 public class Casella {
-	enum TipusCasella {
+	public enum TipusCasella {
 	    NORMAL,
 	    OCA,
 	    POU,
@@ -33,11 +33,8 @@ public class Casella {
 			break;
 		case OCA:
 			conservaTorn = true;
-			break;
-		case POU:
-			j.setInactiu(2);
 			int ocaIndex = -1;
-			int i = m_posicio;
+			int i = m_posicio + 1;
 			while (ocaIndex == -1 || i < caselles.size()) {
 				if (caselles.get(i).esOca()) {
 					ocaIndex = i;
@@ -48,6 +45,10 @@ public class Casella {
 			if (ocaIndex != -1) {
 				j.mou(ocaIndex);
 			}
+			break;
+		case POU:
+			j.setInactiu(2);
+			
 			break;
 		default:
 			//sysout error
