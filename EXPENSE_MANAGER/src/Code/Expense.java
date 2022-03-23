@@ -18,8 +18,9 @@ public class Expense {
 		this.date = date;
 		payers = new HashMap<String, Integer>();
 	}
-	
+
 	public Integer getAmount(String userName) {
+
 		return payers.get(userName);
 	}
 	
@@ -33,12 +34,11 @@ public class Expense {
 	public String toString() {
 		String info = "";
 		info +="{";
-		info +="\n- Expense: " + this.description;
-		info +="\n- Amount: " + this.amount;
-		info +="\n- Date: " + this.getDate(); 
-		info +="\n- Payers: " + this.payers;
-		
-		info +="\n\t : " + this.getDate();
+		info +="\n - Expense: " + this.description;
+		info +="\n - Amount: " + this.amount;
+		info +="\n - Date: " + this.getDate(); 
+		info +="\n - Payers: " + this.payers;
+		info +="\n}";
 		return info;
 	}
 	
