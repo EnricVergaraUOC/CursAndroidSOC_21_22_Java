@@ -19,7 +19,10 @@ public class Expense {
 		payers = new HashMap<String, Integer>();
 	}
 
-	public Integer getAmount(String userName) {
+	public int getAmount () {
+		return this.amount;
+	}
+	public Integer getAmountSpentByUser(String userName) {
 
 		return payers.get(userName);
 	}
