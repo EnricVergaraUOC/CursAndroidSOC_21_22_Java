@@ -19,6 +19,13 @@ public class Trip {
 		expenses = new ArrayList<Expense>();
 	}
 	
+	public ArrayList<String> GetUserNames(){
+		ArrayList<String> userNames = new ArrayList<String>();
+		for (User u: users) {
+			userNames.add(u.getName());
+		}
+		return userNames;
+	}
 	public void AddNewUser (User user) {
 		users.add(user);
 	}
@@ -29,6 +36,10 @@ public class Trip {
 	
 	public int CalculateSummary () {
 		int totalAmount = 0;
+		for (User u: users) {
+			u.ResetAmount();
+		}
+		
 		for(Expense expense: expenses) {
 			totalAmount += expense.getAmount();
 			for(User user: users) {

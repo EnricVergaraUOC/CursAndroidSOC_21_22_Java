@@ -14,6 +14,10 @@ public class User {
 		this.image = image;
 		this.amountSpent = 0;
 	}
+	public void ResetAmount(){
+		amountSpent = 0;
+	}
+	
 	public String getName () {
 		return this.name;
 	}
